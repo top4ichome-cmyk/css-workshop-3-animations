@@ -14,8 +14,48 @@
 
 /* ваши @keyframes здесь */
 
+@keyframes blink {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
 
-/* ===== Базовые статичные стили макета (менять не нужно) ===== */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(30px);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    35% {
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
 body {
     display: flex;
     flex-direction: column;
@@ -63,9 +103,32 @@ body {
 
 /* ваши правила .box-N { animation: ...; } здесь */
 
+.box-2 {
+    animation: blink 0.4s infinite;
+}
+
+.box-3 {
+    animation: pulse 0.4s infinite;
+}
+
+.box-4 {
+    animation: slide 1s infinite;
+}
+
+.box-1 {
+    animation: fade-in 0.9s infinite;
+}
+
 
 /* ===== БЛОК C. Этап 5 — доступность ===== */
 /* Добавьте @media (prefers-reduced-motion: reduce),           */
 /* который отключает анимации у всех карточек                  */
 
 /* ваш медиазапрос здесь */
+
+@media (prefers-reduced-motion: reduce) {
+  .box-1, .box-2, .box-3, .box-4 {
+    animation: none !important;
+    transition: none !important;
+  }
+}
